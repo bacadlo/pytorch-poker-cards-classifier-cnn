@@ -25,7 +25,7 @@ pytorch-poker-cards-classifier-cnn/
 
 ## Prerequisites
 
-- Python 3.6 or higher
+- Python 3.10 or higher
 - pip package manager
 - CUDA-capable GPU (optional, but recommended for training)
 
