@@ -10,7 +10,6 @@ This project utilizes deep learning techniques to build an accurate playing card
 
 - Custom CNN architecture optimized for playing card classification
 - Support for 53 card classes (52 standard cards plus joker)
-- Pre-trained model weights included for immediate inference
 - Data preprocessing and augmentation pipeline
 - Training and evaluation scripts in Jupyter notebook format
 - Early stopping implementation to prevent overfitting
@@ -21,18 +20,22 @@ This project utilizes deep learning techniques to build an accurate playing card
 pytorch-poker-cards-classifier-cnn/
 ├── dataset/                      # Training and validation datasets
 ├── card-classifier.ipynb         # Main notebook with model implementation
-├── best_card_classifier.pth      # Pre-trained model weights
 └── .gitignore                    # Git ignore configuration
 ```
 
-## Requirements
+## Prerequisites
 
 - Python 3.6 or higher
+- pip package manager
+- CUDA-capable GPU (optional, but recommended for training)
+
+## Requirements
+
 - PyTorch
 - torchvision
 - NumPy
 - Matplotlib
-- Jupyter Notebook
+- JupyterLab
 - PIL/Pillow
 
 ## Installation
@@ -44,45 +47,47 @@ git clone https://github.com/bacadlo/pytorch-poker-cards-classifier-cnn.git
 cd pytorch-poker-cards-classifier-cnn
 ```
 
+1. Create a virtual environment (recommended):
+
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+
 1. Install required dependencies:
 
 ```bash
-pip install torch torchvision numpy matplotlib jupyter pillow
+pip install torch torchvision numpy matplotlib jupyterlab pillow
+```
+
+For GPU support with CUDA, install PyTorch with CUDA:
+
+```bash
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
+```
+
+1. Launch JupyterLab:
+
+```bash
+jupyter lab
 ```
 
 ## Usage
 
 ### Training the Model
 
-Open and run the Jupyter notebook:
+Open and run the notebook in JupyterLab:
 
 ```bash
-jupyter notebook card-classifier.ipynb
+jupyter lab
 ```
 
-The notebook contains the complete pipeline including:
+Navigate to `card-classifier.ipynb` and run the cells. The notebook contains the complete pipeline including:
 
 - Data loading and preprocessing
 - Model architecture definition
 - Training loop with validation
 - Model evaluation and metrics
-
-### Using Pre-trained Model
-
-The repository includes pre-trained weights (`best_card_classifier.pth`) for immediate inference:
-
-```python
-import torch
-from model import CardClassifierCNN  # Assuming model class is defined
-
-# Load the model
-model = CardClassifierCNN(num_classes=53)
-model.load_state_dict(torch.load('best_card_classifier.pth'))
-model.eval()
-
-# Perform inference on new images
-# ... your inference code here
-```
 
 ## Model Architecture
 
@@ -133,11 +138,20 @@ Contributions are welcome. Please feel free to submit issues or pull requests fo
 
 This project is open source and available under the MIT License.
 
+## References
+
+This project was built using the following resources:
+
+- [Train Your First PyTorch Model - Card Classifier by Rob Mulla](https://www.kaggle.com/code/robikscube/train-your-first-pytorch-model-card-classifier) - Tutorial and training approach
+- [Cards Image Dataset Classification](https://www.kaggle.com/datasets/gpiosenka/cards-image-datasetclassification) - Dataset source
+- [PyTorch CNN Playing Cards Classifier by hiroonwijekoon](https://github.com/hiroonwijekoon/pytorch-cnn-playing-cards-classifier) - Reference implementation
+
 ## Acknowledgments
 
 - PyTorch team for the deep learning framework
-- Playing card dataset contributors
-- CNN architecture inspirations from computer vision research
+- Rob Mulla for the comprehensive PyTorch tutorial
+- Kaggle community for the playing cards dataset
+- Reference implementations that guided this project’s development
 
 ## Contact
 
